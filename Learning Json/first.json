@@ -1,0 +1,11 @@
+{
+    "name": {
+        "password": "psycho420",
+        "IsAdmin": false
+    },
+    "gmail": "psycho@gmail.com",
+    "code": 420,
+    "IsloggedIn": true,
+    "AltAcc": null,
+    "Roles": ["admin", "manager", "user"]
+}

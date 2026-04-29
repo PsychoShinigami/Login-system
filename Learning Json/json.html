@@ -1,0 +1,42 @@
+<html>
+    <body>
+        <p>
+            Accessing JSON Object Keys and Values using for/in loop
+        </p>
+        <div id="Id">
+
+        </div>
+        <script>
+            let obj= {
+                        "Name": {
+                            "Password": "psycho420",
+                            "IsAdmin": false
+                        },
+                        "Gmail": "psycho@gmail.com",
+                        "Code": 420,
+                        "IsloggedIn": true,
+                        "AltAcc": null,
+                        "Roles": ["admin", "manager", "user"]
+                    }
+            let obj2='{"Name": {"Password": "psycho420","IsAdmin": false},"Gmail": "psycho@gmail.com","Code": 420,"IsloggedIn": true,"AltAcc": null,"Roles": ["admin", "manager", "user"]}'
+            for (let a in obj.Name){
+                let x=obj.Name[a];
+                document.getElementById("Id").innerHTML+= a+ " : "+x+"<br/>";
+            }
+            for (let b=0; b<obj.Roles.length; b++){
+                let y=obj.Roles;
+                document.getElementById("Id").innerHTML+= y[b]+"<br/>"
+            }
+            for (let i in obj){
+                // document.getElementById("Id").innerHTML+= i+"<br/>";
+                // document.getElementById("Id").innerHTML+= obj[i]+"<br/>";
+                document.getElementById("Id").innerHTML+= i+" : "+JSON.stringify(obj[i])+"<br/>";
+            }
+            receivedObj2= JSON.parse(obj2);
+            for (let i in receivedObj2){
+                document.getElementById("Id").innerHTML+= i+" : "+JSON.stringify(receivedObj2[i])+"<br/>";
+            }
+            
+        </script>
+    </body>
+</html>
