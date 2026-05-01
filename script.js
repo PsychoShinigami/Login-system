@@ -18,25 +18,37 @@ if (btnSubmit){
             } else if (username===""){
                 alert("Username cannot be empty!");
             } else if (key1===key2 && username!==""){
-                localStorage.setItem(username, key1);
-                alert("Soul Registered! You may now login.");
-                window.location.href = "index.html";
-
+                fetch('http://127.0.0.1:5000/register',{
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({"username": username, "password": key1})
+                })
+                .then(res => res.json())
+                .then(data => {
+                    alert(data.message);
+                    window.location.href = "http://127.0.0.1:5500/index.html";
+                });               
             } else {
                 alert("An unknown error occurred. Please try again.");
             }
         } else {
             const key=passwords[0].value;
-            const savedKey=localStorage.getItem(username);
-
-            if (savedKey === null) {
-                alert("No soul found with that username. Please register first.");
-            } else if (key === savedKey) {
-                alert("Access Granted, " + username + " Welcome to the Realm!");
-                window.location.href = "https://reaperly.com";
-            } else {
-                alert("Incorrect Death Key. Access Denied.");
-            } 
+            fetch('http://127.0.0.1:5000/login', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ "username": username, "password": key })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert("Access Granted, " + username + " Welcome to the Realm!");
+                    window.location.href = "https://reaperly.com";
+                } else {
+                alert(data.message);
+                }
+            })
+            .catch(err => console.error("Server is likely offline:", err));
+             
         }
     });
 }
