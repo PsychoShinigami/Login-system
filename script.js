@@ -18,7 +18,7 @@ if (btnSubmit){
             } else if (username===""){
                 alert("Username cannot be empty!");
             } else if (key1===key2 && username!==""){
-                fetch('PsychoShinigami.pythonanywhere.com/register',{
+                fetch('https://psychoshinigami.pythonanywhere.com/register',{
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({"username": username, "password": key1})
@@ -33,7 +33,7 @@ if (btnSubmit){
             }
         } else {
             const key=passwords[0].value;
-            fetch('PsychoShinigami.pythonanywhere.com/login', {
+            fetch('https://psychoshinigami.pythonanywhere.com/login', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ "username": username, "password": key })
