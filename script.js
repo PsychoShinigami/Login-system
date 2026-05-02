@@ -18,7 +18,7 @@ if (btnSubmit){
             } else if (username===""){
                 alert("Username cannot be empty!");
             } else if (key1===key2 && username!==""){
-                fetch('http://127.0.0.1:5000/register',{
+                fetch('PsychoShinigami.pythonanywhere.com/register',{
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({"username": username, "password": key1})
@@ -26,14 +26,14 @@ if (btnSubmit){
                 .then(res => res.json())
                 .then(data => {
                     alert(data.message);
-                    window.location.href = "http://127.0.0.1:5500/index.html";
+                    window.location.href = "https://psychoshinigami.github.io/Login-system/";
                 });               
             } else {
                 alert("An unknown error occurred. Please try again.");
             }
         } else {
             const key=passwords[0].value;
-            fetch('http://127.0.0.1:5000/login', {
+            fetch('PsychoShinigami.pythonanywhere.com/login', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ "username": username, "password": key })
